@@ -1,7 +1,10 @@
 package com.cheine.jgameoflife;
 
-public interface Universe {
-	public void nextGeneration();
-	public void getGenerationCount();
-	public CellStatus[][] getState();
+interface Universe extends Time {
+	public boolean[][] getStatusMap();
+	public void clear();
+	public int getWidth();
+	public int getHeight();
+	public void populate();
+	public String toString();
 }
