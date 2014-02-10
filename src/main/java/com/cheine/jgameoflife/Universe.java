@@ -6,5 +6,6 @@ interface Universe extends Time {
 	public int getWidth();
 	public int getHeight();
 	public void populate();
-	public String toString();
+	public String serialize();
+	public void load(String serialized);
 }

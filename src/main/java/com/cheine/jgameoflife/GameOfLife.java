@@ -57,4 +57,14 @@ public class GameOfLife implements Universe, Time {
 		throw new UnsupportedOperationException();
 	}
 
+	public String serialize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void load(String serialized) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
