@@ -14,7 +14,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public void tick() {
 		// TODO Auto-generated method stub
-
+		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
@@ -22,7 +22,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public boolean[][] getStatusMap() {
 		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
@@ -30,7 +30,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public void clear() {
 		// TODO Auto-generated method stub
-
+		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +38,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public int getWidth() {
 		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
@@ -46,7 +46,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +54,7 @@ public class GameOfLife implements Universe, Time {
 	 */
 	public void populate() {
 		// TODO Auto-generated method stub
-
+		throw new UnsupportedOperationException();
 	}
 
 }
