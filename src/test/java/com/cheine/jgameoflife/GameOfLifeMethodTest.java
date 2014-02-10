@@ -5,19 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 
-public class GameOfLifeTest {
-	private GameOfLife _game;
+public class GameOfLifeMethodTest {
+	private GameOfLife testGame;
 	
 	@Before
 	public void setUp() throws Exception {
-		_game = new GameOfLife();
+		testGame = new GameOfLife();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		_game = null;
+		testGame = null;
 	}
 
 	@Test
