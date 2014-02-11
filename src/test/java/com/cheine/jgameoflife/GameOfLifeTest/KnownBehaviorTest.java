@@ -78,12 +78,11 @@ public class KnownBehaviorTest {
 	 */
 	@Test
 	public void testPredestination() {
-		GameOfLife testGame = new GameOfLife();
 		int gen = 0, len = knownGenerations.length;
 		int testLifetime = len * TEST_GENERATIONS;
 		
 		// Start the game
-		testGame.load(knownGenerations[gen]); 
+		GameOfLife testGame = new GameOfLife(knownGenerations[gen]);
 		
 		for(int i = 0; i < testLifetime; i++) {
 			gen = ++gen % len; // Handle oscillators of any period length
