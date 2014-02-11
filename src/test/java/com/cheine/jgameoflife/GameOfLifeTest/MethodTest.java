@@ -173,6 +173,9 @@ public class MethodTest {
 		testGame = null;
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#tick()}.
+	 */
 	@Test
 	public void testTick() {		
 		for(int tick = 0; tick < testTicks; tick++) {
@@ -187,22 +190,34 @@ public class MethodTest {
 		}
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getStatusMap()}.
+	 */
 	@Test
 	public void testGetStatusMap() {
 		boolean[][] map = testGame.getStatusMap();
 		assertTrue(serializedIntegrityCheck(map, testGame.serialize()));
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getWidth()}.
+	 */
 	@Test
 	public void testGetWidth() {
 		assertEquals(knownWidth, testGame.getWidth());
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getHeight()}.
+	 */
 	@Test
 	public void testGetHeight() {
 		assertEquals(knownHeight, testGame.getHeight());
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife(String)}.
+	 */
 	@Test
 	public void testConstructor() {
 		assertEquals(knownWidth, testGame.getWidth());
@@ -210,6 +225,9 @@ public class MethodTest {
 		assertEquals(knownUniverse[0], testGame.serialize());
 	}
 
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#serialize()}.
+	 */
 	@Test
 	public void testSerialize() {
 		int cycles = knownUniverse.length;
@@ -221,6 +239,9 @@ public class MethodTest {
 		}
 	}
 	
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#load()}.
+	 */
 	@Test
 	public void testLoad() {
 		int cycles = knownUniverse.length;

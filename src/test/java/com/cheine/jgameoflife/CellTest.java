@@ -14,19 +14,17 @@ import org.junit.Test;
  *
  */
 public class CellTest {
+	
+	private Cell testCell;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
+		testCell = new Cell();
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
+		testCell = null;
 	}
 
 	/**
