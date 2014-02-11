@@ -9,36 +9,52 @@ package com.cheine.jgameoflife;
  */
 public class Cell implements Life {
 
-	/* (non-Javadoc)
+	protected boolean status;
+	
+	/**
+	 * Create a cell whose life status corresponds to the value
+	 * of initialState (ie. true:alive ; false:dead)
+	 * 
+	 * @param initialState Whether to create the cell as initially
+	 * living or initially dead
+	 */
+	public Cell(boolean initialState) {
+		this.status = initialState;
+	}
+	
+	/**
+	 * Create a non-living cell.
+	 */
+	public Cell() {
+		this(false);
+	}
+	
+	/**
 	 * @see com.cheine.jgameoflife.Life#isAlive()
 	 */
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see com.cheine.jgameoflife.Life#isDead()
 	 */
 	public boolean isDead() {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see com.cheine.jgameoflife.Life#kill()
 	 */
 	public void kill() {
-		// TODO Auto-generated method stub
-
+		throw new UnsupportedOperationException();
 	}
 
-	/* (non-Javadoc)
+	/**
 	 * @see com.cheine.jgameoflife.Life#ressurect()
 	 */
 	public void ressurect() {
-		// TODO Auto-generated method stub
-
+		throw new UnsupportedOperationException();
 	}
 
 }
