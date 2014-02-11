@@ -1,4 +1,4 @@
-package com.cheine.jgameoflife;
+package com.cheine.jgameoflife.GameOfLifeTest;
 
 import static org.junit.Assert.*;
 
@@ -10,15 +10,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.cheine.jgameoflife.GameOfLife;
+
 @RunWith(Parameterized.class)
-public class GameOfLifeInputTest {
+public class InputTest {
 
 	private int knownWidth;
 	private int knownHeight;
 	private String initialState;
 	private String expectedState;
 
-	public GameOfLifeInputTest(int width, int height, String initialState, String expectedNextState) {
+	public InputTest(int width, int height, String initialState, String expectedNextState) {
 		this.knownWidth = width;
 		this.knownHeight = height;
 		this.initialState = initialState;

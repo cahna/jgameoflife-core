@@ -1,4 +1,4 @@
-package com.cheine.jgameoflife;
+package com.cheine.jgameoflife.GameOfLifeTest;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GameOfLifeMethodTest {
+import com.cheine.jgameoflife.GameOfLife;
+
+public class MethodTest {
 	private GameOfLife testGame;
 	
 	@Before
