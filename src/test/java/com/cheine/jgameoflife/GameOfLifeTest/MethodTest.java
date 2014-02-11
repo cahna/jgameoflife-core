@@ -33,7 +33,7 @@ public class MethodTest {
 
 	@Test
 	public void testClear() {
-		fail("Not yet implemented");
+		testGame.populate();
 	}
 
 	@Test

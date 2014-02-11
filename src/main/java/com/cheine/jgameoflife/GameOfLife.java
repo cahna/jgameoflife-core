@@ -52,7 +52,7 @@ public class GameOfLife implements Universe, Time {
 	/* (non-Javadoc)
 	 * @see com.cheine.jgameoflife.Universe#populate()
 	 */
-	public void populate() {
+	public void populate(int width, int height) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
