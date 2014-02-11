@@ -33,7 +33,34 @@ public class MethodTest {
 
 	@Test
 	public void testClear() {
-		testGame.populate();
+		int width = 3, height = 3;
+		String overpopulatedTest = "111\n111\n111\n";
+		String afterClear = "000\n000\n000\n";
+		
+		testGame.load(overpopulatedTest);
+		
+		boolean[][] map = testGame.getStatusMap();
+		
+		// Make sure all organisms are alive
+		assertEquals(overpopulatedTest, testGame.serialize());
+				
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				assertTrue(map[i][j]);
+			}
+		}
+		
+		testGame.clear();
+		
+		// Make sure all organisms are dead
+		
+		assertEquals(afterClear, testGame.serialize());
+		
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
+				assertFalse(map[i][j]);
+			}
+		}
 	}
 
 	@Test
@@ -48,7 +75,10 @@ public class MethodTest {
 
 	@Test
 	public void testPopulate() {
-		fail("Not yet implemented");
+		int width = 5, height = 5;
+		testGame.populate(width, height);
+		assertEquals(width, testGame.getWidth());
+		assertEquals(height, testGame.getHeight());
 	}
 
 	@Test
