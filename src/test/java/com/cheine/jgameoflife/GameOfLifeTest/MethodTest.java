@@ -23,44 +23,16 @@ public class MethodTest {
 
 	@Test
 	public void testTick() {
-		fail("Not yet implemented");
+		assertEquals(0, testGame.elapsedTicks());
+		testGame.tick();
+		assertEquals(1, testGame.elapsedTicks());
+		
+		fail("Universe generations not yet implemented");
 	}
 
 	@Test
 	public void testGetStatusMap() {
 		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClear() {
-		int width = 3, height = 3;
-		String overpopulatedTest = "111\n111\n111\n";
-		String afterClear = "000\n000\n000\n";
-		
-		testGame.load(overpopulatedTest);
-		
-		boolean[][] map = testGame.getStatusMap();
-		
-		// Make sure all organisms are alive
-		assertEquals(overpopulatedTest, testGame.serialize());
-				
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
-				assertTrue(map[i][j]);
-			}
-		}
-		
-		testGame.clear();
-		
-		// Make sure all organisms are dead
-		
-		assertEquals(afterClear, testGame.serialize());
-		
-		for(int i = 0; i < width; i++) {
-			for(int j = 0; j < height; j++) {
-				assertFalse(map[i][j]);
-			}
-		}
 	}
 
 	@Test
