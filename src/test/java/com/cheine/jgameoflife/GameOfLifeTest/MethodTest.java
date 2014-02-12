@@ -65,6 +65,7 @@ public class MethodTest {
 			"0000000110\n" +
 			"0000000000\n" +
 			"0000000000\n",
+			
 			// Repeat steps to create loop within infinite toroidal universe
 			"0000000000\n" +
 			"0110001000\n" +
@@ -113,10 +114,19 @@ public class MethodTest {
 			"0011000000\n" +
 			"0000000000\n" +
 			"0000000000\n"
-		};
-	
-	/*
-	 * Testing-specific helper methods
+	};
+
+	/**
+	 * Ensures that a given serialized map of a Universe corresponds with a
+	 * given 2D array of booleans (is alive statuses). This verifies my planned,
+	 * specific implementation of serialize() since it is also tightly coupled 
+	 * with these test implementations. 
+	 * 
+	 * @param map
+	 * @param serializedMap
+	 * @return true if the true/false values in map correspond to '1'/'0' in 
+	 * serializedMap, and if all rows are terminated by a '\n'. False otherwise
+	 * and if serializedMap contains invalid or extra characters. 
 	 */
 	private static boolean serializedIntegrityCheck(boolean[][] map, String serializedMap) {
 		int height = map.length; // How many columns 
@@ -125,8 +135,15 @@ public class MethodTest {
 		
 		for(int col = 0; col < height; col++) {
 			for(int row = 0; row < width; row++) {
-				char c = serializedMap.charAt(cIndex);
+				char c;
 				boolean expectedState;
+				
+				try {
+					c = serializedMap.charAt(cIndex);
+				} catch(IndexOutOfBoundsException e) {
+					return false;
+				}
+				
 				
 				switch(c) {
 					case '\n':
@@ -159,6 +176,22 @@ public class MethodTest {
 			else
 				cIndex++;
 		}
+		
+		try {
+			// There should not be any more characters left in the stream after processing
+			serializedMap.charAt(cIndex);
+			return false;
+		} catch(IndexOutOfBoundsException e) {
+			// An exception is what is wanted
+			return true;
+		}		
+	}
+	
+	private static boolean containsUniformStatus(boolean requiredStatus, boolean[][] map) {
+		for(int i = 0; i < map.length; i++)
+			for(int j = 0; j < map[0].length; j++)
+				if(requiredStatus != map[i][j])
+					return false;
 		
 		return true;
 	}
@@ -219,10 +252,21 @@ public class MethodTest {
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife(String)}.
 	 */
 	@Test
-	public void testConstructor() {
+	public void testGameOfLifeString() {
 		assertEquals(knownWidth, testGame.getWidth());
 		assertEquals(knownHeight, testGame.getHeight());
 		assertEquals(knownUniverse[0], testGame.serialize());
+	}
+	
+	/**
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife()}.
+	 */
+	@Test
+	public void testGameOfLifeIntInt() {
+		GameOfLife game = new GameOfLife(knownWidth, knownHeight);
+		assertEquals(knownWidth, game.getWidth());
+		assertEquals(knownHeight, game.getHeight());
+		assertTrue(containsUniformStatus(false, game.getStatusMap()));
 	}
 
 	/**
