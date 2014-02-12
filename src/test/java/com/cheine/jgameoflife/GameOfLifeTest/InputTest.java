@@ -2,6 +2,7 @@ package com.cheine.jgameoflife.GameOfLifeTest;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -15,6 +16,7 @@ import com.cheine.jgameoflife.GameOfLife;
 @RunWith(Parameterized.class)
 public class InputTest {
 
+	GameOfLife testGame;
 	private int knownWidth;
 	private int knownHeight;
 	private String initialState;
@@ -43,25 +45,25 @@ public class InputTest {
 		
 		return Arrays.asList(data);
 	}
-
+	
 	@Test
-	public void testLoadValidGameState() {
-		GameOfLife testGame = new GameOfLife(initialState);
+	public void testLoadValidGameState() throws ParseException {
+		testGame = new GameOfLife(initialState);
 		assertEquals(knownWidth, testGame.getWidth());
 		assertEquals(knownHeight, testGame.getHeight());
 		assertEquals(initialState, testGame.serialize());
 	}
 
 	@Test
-	public void testKnownTransitionSerialize() {
-		GameOfLife testGame = new GameOfLife(initialState);
+	public void testKnownTransitionSerialize() throws ParseException {
+		testGame = new GameOfLife(initialState);
 		testGame.tick();
 		assertEquals(expectedState, testGame.serialize());
 	}
 	
 	@Test
-	public void testKnownTransition() {
-		GameOfLife testGame = new GameOfLife(initialState);
+	public void testKnownTransition() throws ParseException {
+		testGame = new GameOfLife(initialState);
 		testGame.tick();
 		assertEquals(expectedState, testGame.serialize());
 	}

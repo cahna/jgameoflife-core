@@ -2,6 +2,7 @@ package com.cheine.jgameoflife.GameOfLifeTest;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -77,7 +78,7 @@ public class KnownBehaviorTest {
 	 * sake of saving time, I'm only leaving this test.
 	 */
 	@Test
-	public void testPredestination() {
+	public void testPredestination() throws ParseException {
 		int gen = 0, len = knownGenerations.length;
 		int testLifetime = len * TEST_GENERATIONS;
 		

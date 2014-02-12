@@ -33,28 +33,28 @@ public class Cell implements Life {
 	 * @see com.cheine.jgameoflife.Life#isAlive()
 	 */
 	public boolean isAlive() {
-		throw new UnsupportedOperationException();
+		return status;
 	}
 
 	/**
 	 * @see com.cheine.jgameoflife.Life#isDead()
 	 */
 	public boolean isDead() {
-		throw new UnsupportedOperationException();
+		return !status; 
 	}
 
 	/**
 	 * @see com.cheine.jgameoflife.Life#kill()
 	 */
 	public void kill() {
-		throw new UnsupportedOperationException();
+		status = false;
 	}
 
 	/**
 	 * @see com.cheine.jgameoflife.Life#resurrect()
 	 */
 	public void resurrect() {
-		throw new UnsupportedOperationException();
+		status = true;
 	}
 
 }

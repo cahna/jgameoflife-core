@@ -2,15 +2,13 @@ package com.cheine.jgameoflife.GameOfLifeTest;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
+import java.text.ParseException;
+
 import org.junit.Test;
 
 import com.cheine.jgameoflife.GameOfLife;
 
 public class MethodTest {
-	
-	private GameOfLife testGame;
 	
 	// Using universe with block, blinker, and spaceship for tests
 	private final int testTicks = 100;
@@ -128,7 +126,7 @@ public class MethodTest {
 	 * serializedMap, and if all rows are terminated by a '\n'. False otherwise
 	 * and if serializedMap contains invalid or extra characters. 
 	 */
-	private static boolean serializedIntegrityCheck(boolean[][] map, String serializedMap) {
+	public static boolean serializedIntegrityCheck(boolean[][] map, String serializedMap) {
 		int height = map.length; // How many columns 
 		int width = map[0].length; // How many rows
 		int cIndex = 0;
@@ -194,30 +192,28 @@ public class MethodTest {
 	 * @param map
 	 * @return true if all values in map match requiredStatus; false otherwise.
 	 */
-	private static boolean containsUniformStatus(boolean requiredStatus, boolean[][] map) {
-		for(int i = 0; i < map.length; i++)
-			for(int j = 0; j < map[0].length; j++)
-				if(requiredStatus != map[i][j])
+	public static boolean containsUniformStatus(boolean requiredStatus, boolean[][] map) {
+		for(int y = 0; y < map.length; y++) {
+			for(int x = 0; x < map[0].length; x++) {
+				if(map[y][x] != requiredStatus) {
 					return false;
+				} else {
+					continue;
+				}
+			}
+		}
 		
 		return true;
-	}
-	
-	@Before
-	public void setUp() {
-		testGame = new GameOfLife(knownUniverse[0]);
-	}
-
-	@After
-	public void tearDown() {
-		testGame = null;
 	}
 
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#tick()}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testTick() {		
+	public void testTick() throws ParseException {		
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
+		
 		for(int tick = 0; tick < testTicks; tick++) {
 			assertEquals(tick, testGame.elapsedTicks());
 			
@@ -232,26 +228,32 @@ public class MethodTest {
 
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getStatusMap()}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testGetStatusMap() {
+	public void testGetStatusMap() throws ParseException {
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
 		boolean[][] map = testGame.getStatusMap();
 		assertTrue(serializedIntegrityCheck(map, testGame.serialize()));
 	}
 
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getWidth()}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testGetWidth() {
+	public void testGetWidth() throws ParseException {
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
 		assertEquals(knownWidth, testGame.getWidth());
 	}
 
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#getHeight()}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testGetHeight() {
+	public void testGetHeight() throws ParseException {
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
 		assertEquals(knownHeight, testGame.getHeight());
 	}
 
@@ -259,17 +261,25 @@ public class MethodTest {
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife(String)}.
 	 */
 	@Test
-	public void testGameOfLifeString() {
-		assertEquals(knownWidth, testGame.getWidth());
-		assertEquals(knownHeight, testGame.getHeight());
-		assertEquals(knownUniverse[0], testGame.serialize());
+	public void testGameOfLifeString() throws ParseException {
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
+		int cycles = knownUniverse.length;
+		
+		for(int i = 0; i < cycles; i++) {
+			testGame = new GameOfLife(knownUniverse[i]);
+			assertEquals(knownWidth, testGame.getWidth());
+			assertEquals(knownHeight, testGame.getHeight());
+			assertEquals(knownUniverse[i], testGame.serialize());
+			assertTrue(serializedIntegrityCheck(testGame.getStatusMap(), knownUniverse[i]));
+		}
 	}
 	
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.GameOfLife()}.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testGameOfLifeIntInt() {
+	public void testGameOfLifeIntInt() throws ParseException {
 		GameOfLife game = new GameOfLife(knownWidth, knownHeight);
 		assertEquals(knownWidth, game.getWidth());
 		assertEquals(knownHeight, game.getHeight());
@@ -277,10 +287,13 @@ public class MethodTest {
 	}
 
 	/**
-	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#serialize()}.
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#serialize()}
+	 * using {@link com.cheine.jgameoflife.GameOfLife(String)} constructor.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testSerialize() {
+	public void testSerialize() throws ParseException {
+		GameOfLife testGame = new GameOfLife(knownUniverse[0]);
 		int cycles = knownUniverse.length;
 		
 		// Test all known universe statues with serialize
@@ -291,18 +304,26 @@ public class MethodTest {
 	}
 	
 	/**
-	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#load()}.
+	 * Test method for {@link com.cheine.jgameoflife.GameOfLife#serialize()}
+	 * using {@link com.cheine.jgameoflife.GameOfLife(int, int)} constructor.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void testLoad() {
-		int cycles = knownUniverse.length;
-		
-		for(int i = 0; i < cycles; i++) {
-			testGame.load(knownUniverse[i]);
-			assertEquals(knownWidth, testGame.getWidth());
-			assertEquals(knownHeight, testGame.getHeight());
-			assertEquals(knownUniverse[i], testGame.serialize());
-			assertTrue(serializedIntegrityCheck(testGame.getStatusMap(), knownUniverse[i]));
-		}
+	public void testSerializeWithBooleanMap() {
+		GameOfLife testGame = new GameOfLife(13,7);
+		assertTrue(serializedIntegrityCheck(testGame.getStatusMap(), testGame.serialize()));
+	}
+	
+	/**
+	 * Test method chaining output of {@link com.cheine.jgameoflife.GameOfLife#serialize()}
+	 * into {@link com.cheine.jgameoflife.GameOfLife(String)} constructor.
+	 * @throws ParseException 
+	 */
+	@Test
+	public void testSerializeThenLoad() throws ParseException {
+		GameOfLife testGame = new GameOfLife(5, 6);
+		String serialized = testGame.serialize();
+		GameOfLife duplicateGame = new GameOfLife(serialized);
+		assertEquals(serialized, duplicateGame.serialize());
 	}
 }
