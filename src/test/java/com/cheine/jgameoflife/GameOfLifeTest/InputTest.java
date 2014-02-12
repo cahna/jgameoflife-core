@@ -46,8 +46,7 @@ public class InputTest {
 
 	@Test
 	public void testLoadValidGameState() {
-		GameOfLife testGame = new GameOfLife();
-		testGame.load(initialState);
+		GameOfLife testGame = new GameOfLife(initialState);
 		assertEquals(knownWidth, testGame.getWidth());
 		assertEquals(knownHeight, testGame.getHeight());
 		assertEquals(initialState, testGame.serialize());
@@ -55,16 +54,14 @@ public class InputTest {
 
 	@Test
 	public void testKnownTransitionSerialize() {
-		GameOfLife testGame = new GameOfLife();
-		testGame.load(initialState);
+		GameOfLife testGame = new GameOfLife(initialState);
 		testGame.tick();
 		assertEquals(expectedState, testGame.serialize());
 	}
 	
 	@Test
 	public void testKnownTransition() {
-		GameOfLife testGame = new GameOfLife();
-		testGame.load(initialState);
+		GameOfLife testGame = new GameOfLife(initialState);
 		testGame.tick();
 		assertEquals(expectedState, testGame.serialize());
 	}
