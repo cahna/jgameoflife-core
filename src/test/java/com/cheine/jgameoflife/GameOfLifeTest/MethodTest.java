@@ -122,8 +122,8 @@ public class MethodTest {
 	 * specific implementation of serialize() since it is also tightly coupled 
 	 * with these test implementations. 
 	 * 
-	 * @param map
-	 * @param serializedMap
+	 * @param map boolean statuses of organisms' current alive status
+	 * @param serializedMap string to verify
 	 * @return true if the true/false values in map correspond to '1'/'0' in 
 	 * serializedMap, and if all rows are terminated by a '\n'. False otherwise
 	 * and if serializedMap contains invalid or extra characters. 

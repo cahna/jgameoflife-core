@@ -14,25 +14,19 @@ import org.junit.Test;
  *
  */
 public class CellTest {
-	
-	private Cell testCell;
-
-	@Before
-	public void setUp() {
-		testCell = new Cell();
-	}
-
-	@After
-	public void tearDown() {
-		testCell = null;
-	}
 
 	/**
 	 * Test method for {@link com.cheine.jgameoflife.Cell#Cell(boolean)}.
 	 */
 	@Test
 	public void testCellBoolean() {
-		fail("Not yet implemented");
+		Cell alive = new Cell(true);
+		assertTrue(alive.isAlive());
+		assertFalse(alive.isDead());
+		
+		Cell dead = new Cell(false);
+		assertTrue(dead.isDead());
+		assertFalse(dead.isAlive());
 	}
 
 	/**
@@ -40,7 +34,9 @@ public class CellTest {
 	 */
 	@Test
 	public void testCell() {
-		fail("Not yet implemented");
+		Cell defaultCell = new Cell();
+		assertTrue(defaultCell.isDead());
+		assertFalse(defaultCell.isAlive());
 	}
 
 	/**
