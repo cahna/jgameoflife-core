@@ -52,7 +52,7 @@ public class App
         while(true) {
         	System.in.read();
         	g.tick();
-        	System.out.println(g.serialize());
+        	System.out.println(g.serialize().replace("\n", "\\n\" +\n\""));
         }
     }
 }
