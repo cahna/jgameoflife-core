@@ -1,13 +1,40 @@
 package com.cheine.jgameoflife;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 /**
  * Hello world!
  *
  */
 public class App 
 {
-    public static void main( String[] args )
+	private static final String blockMap = 
+			"0000\n" +
+			"0110\n" +
+			"0110\n" +
+			"0000\n";
+	
+	private static final String beehiveMap = 
+			"000000\n" +
+			"001100\n" +
+			"010010\n" +
+			"001100\n" +
+			"000000\n";
+	
+    public static void main( String[] args ) throws ParseException, IOException
     {
-        System.out.println( "Hello World!" );
+    	String seed = beehiveMap;
+    	
+        System.out.println( "Conway's Game of Life\n\n" );
+        System.out.println( "Seed:\n" + seed );
+        
+        GameOfLife g = new GameOfLife(seed);
+        
+        while(true) {
+        	System.in.read();
+        	g.tick();
+        	System.out.println(g.serialize());
+        }
     }
 }

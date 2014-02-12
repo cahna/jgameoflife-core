@@ -160,11 +160,72 @@ public class GameOfLife extends Universe {
 	}
 	
 	/**
+	 * Calculates the number of living neighbors for a given cell location.
+	 * @param x
+	 * @param y
+	 * @return integer number of living neighbors out of a possible 8
+	 */
+	private static int getLivingNeighbors(boolean[][] map, int x, int y) {
+		int n = 0, height = map.length, width = map[0].length;
+		
+		int north = y-1 < 0 ? height-1 : (y-1)%height;
+		int south = y+1 > height ? 0 : (y+1)%height;
+		int west  = x-1 < 0 ? width-1 : (x-1)%width;
+		int east  = x+1 > width ? 0 : (x+1)%height;
+		
+		StringBuilder s = new StringBuilder(":" + x + "," + y + " - ");
+		
+		if(map[north][x]){
+			n++; s.append("North ");}
+		if(map[north][east]){
+			n++; s.append("Northeast ");}
+		if(map[y][east]){
+			n++; s.append("East ");}
+		if(map[south][east]){
+			n++; s.append("Southeast ");}
+		if(map[south][x]){
+			n++; s.append("South ");}
+		if(map[south][west]){
+			n++; s.append("Southwest ");}
+		if(map[y][west]){
+			n++; s.append("West ");}
+		if(map[north][west]){
+			n++; s.append("Northwest ");}
+		
+		if(n > 0) {
+			System.out.println(s.toString());
+		}
+		
+		return n;
+	}
+	
+	/**
+	 * Implements the rules to Conway's game of life
 	 * @see com.cheine.jgameoflife.Time#tick()
 	 */
 	public void tick() {
 		super.tick();
-		throw new UnsupportedOperationException();
+		
+		int width = getWidth(), height = getHeight();
+		boolean[][] map = getStatusMap();
+		
+		System.out.println(serialize());
+		
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int liveNeighbors = getLivingNeighbors(map, x, y);
+				
+				if(map[y][x] == true) {
+					// Under-population or Over-population kills
+					if(liveNeighbors < 2 || liveNeighbors > 3)
+						cells[y][x].kill();
+				} else {
+					// Dead cell with exactly 3 live neighbors will come to life
+					if(liveNeighbors == 3)
+						cells[y][x].resurrect();
+				}
+			}
+		}
 	}
 
 	/**

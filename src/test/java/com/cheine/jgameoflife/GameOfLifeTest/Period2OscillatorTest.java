@@ -19,7 +19,7 @@ public class Period2OscillatorTest extends KnownBehaviorTest {
 		Object[][] data = new Object[][] {
 				{ 
 					// Blinker (period 2)
-					new Object[] {
+					new String[] {
 						// Step 1
 						"00000\n" +
 						"00100\n" +
@@ -37,7 +37,7 @@ public class Period2OscillatorTest extends KnownBehaviorTest {
 				},
 				{ 
 					// Toad (period 2)
-					new Object[] {
+					new String[] {
 						// Step 1
 						"000000\n" +
 						"000000\n" +
@@ -57,7 +57,7 @@ public class Period2OscillatorTest extends KnownBehaviorTest {
 				},
 				{ 
 					// Beacon (period 2)
-					new Object[] {
+					new String[] {
 						// Step 1
 						"000000\n" +
 						"011000\n" +

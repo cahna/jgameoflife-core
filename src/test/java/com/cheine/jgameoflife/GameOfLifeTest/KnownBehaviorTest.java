@@ -35,37 +35,37 @@ public class KnownBehaviorTest {
 	public static Collection<Object[]> data() {
 		Object[][] data = new Object[][] { 
 				{ 
-					// Block
+					new String[] {// Block
 					"0000\n" +
 					"0110\n" +
 					"0110\n" +
-					"0000\n" 
+					"0000\n"} 
 				},
 				{ 
-					// Beehive	 
+					new String[] {// Beehive	 
 					"000000\n" +
 					"001100\n" +
 					"010010\n" +
 					"001100\n" +
-					"000000\n"
+					"000000\n"}
 					 
 				},
 				{
-					// Loaf
+					new String[] {// Loaf
 					"000000\n" +
 					"001100\n" +
 					"010010\n" +
 					"001010\n" +
 					"000100\n" +
-					"000000\n"
+					"000000\n"}
 				},
 				{ 
-					// Boat 
+					new String[] {// Boat 
 					"00000\n" +
 					"01100\n" +
 					"01010\n" +
 					"00100\n" +
-					"00000\n"
+					"00000\n"}
 				}
 			};
 		

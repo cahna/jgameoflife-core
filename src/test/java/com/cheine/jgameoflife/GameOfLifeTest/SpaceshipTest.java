@@ -19,7 +19,7 @@ public class SpaceshipTest extends KnownBehaviorTest {
 		Object[][] data = new Object[][] {
 				{ 
 					// Lightweight Spaceship
-					new Object[] {
+					new String[] {
 						// Step 1
 						"0000000000\n" +
 						"0010001000\n" +
