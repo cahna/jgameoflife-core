@@ -42,7 +42,7 @@ public class App
 	
     public static void main( String[] args ) throws ParseException, IOException
     {
-    	String seed = lwssMap;
+    	String seed = "01000\n10011\n11001\n01000\n10001\n";
     	
         System.out.println( "Conway's Game of Life\n\n" );
         System.out.println( "Seed:\n" + seed );
@@ -52,7 +52,7 @@ public class App
         while(true) {
         	System.in.read();
         	g.tick();
-        	System.out.println(g.serialize().replace("\n", "\\n\" +\n\""));
+        	System.out.println(g.serialize());
         }
     }
 }

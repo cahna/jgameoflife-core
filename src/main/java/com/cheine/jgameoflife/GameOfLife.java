@@ -203,8 +203,6 @@ public class GameOfLife extends Universe {
 		int width = getWidth(), height = getHeight();
 		boolean[][] map = getStatusMap();
 		
-		System.out.println(serialize());
-		
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
 				int liveNeighbors = getLivingNeighbors(map, x, y);
