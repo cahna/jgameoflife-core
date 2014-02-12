@@ -187,6 +187,13 @@ public class MethodTest {
 		}		
 	}
 	
+	/**
+	 * Checks that all values in a boolean[][] map match the given requiredStatus value.
+	 * 
+	 * @param requiredStatus boolean to check all map values against
+	 * @param map
+	 * @return true if all values in map match requiredStatus; false otherwise.
+	 */
 	private static boolean containsUniformStatus(boolean requiredStatus, boolean[][] map) {
 		for(int i = 0; i < map.length; i++)
 			for(int j = 0; j < map[0].length; j++)
@@ -197,12 +204,12 @@ public class MethodTest {
 	}
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		testGame = new GameOfLife(knownUniverse[0]);
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		testGame = null;
 	}
 
