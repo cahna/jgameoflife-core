@@ -51,9 +51,9 @@ public class Cell implements Life {
 	}
 
 	/**
-	 * @see com.cheine.jgameoflife.Life#ressurect()
+	 * @see com.cheine.jgameoflife.Life#resurrect()
 	 */
-	public void ressurect() {
+	public void resurrect() {
 		throw new UnsupportedOperationException();
 	}
 

@@ -21,5 +21,5 @@ interface Life {
 	/**
 	 * Make the organism living.
 	 */
-	public void ressurect();
+	public void resurrect();
 }

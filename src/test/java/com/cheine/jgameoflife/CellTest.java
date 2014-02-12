@@ -5,8 +5,6 @@ package com.cheine.jgameoflife;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -44,7 +42,11 @@ public class CellTest {
 	 */
 	@Test
 	public void testIsAlive() {
-		fail("Not yet implemented");
+		Cell testCell = new Cell();
+		testCell.resurrect();
+		assertTrue(testCell.isAlive());
+		testCell.kill();
+		assertFalse(testCell.isAlive());
 	}
 
 	/**
@@ -52,7 +54,11 @@ public class CellTest {
 	 */
 	@Test
 	public void testIsDead() {
-		fail("Not yet implemented");
+		Cell testCell = new Cell();
+		testCell.kill();
+		assertTrue(testCell.isDead());
+		testCell.resurrect();
+		assertFalse(testCell.isDead());
 	}
 
 	/**
@@ -60,15 +66,21 @@ public class CellTest {
 	 */
 	@Test
 	public void testKill() {
-		fail("Not yet implemented");
+		Cell testCell = new Cell(true);
+		assertEquals(testCell.isAlive(), !testCell.isDead());
+		testCell.kill();
+		assertEquals(testCell.isDead(), !testCell.isAlive());
 	}
 
 	/**
-	 * Test method for {@link com.cheine.jgameoflife.Cell#ressurect()}.
+	 * Test method for {@link com.cheine.jgameoflife.Cell#resurrect()}.
 	 */
 	@Test
-	public void testRessurect() {
-		fail("Not yet implemented");
+	public void testresurrect() {
+		Cell testCell = new Cell(false);
+		assertEquals(testCell.isDead(), !testCell.isAlive());
+		testCell.resurrect();
+		assertEquals(testCell.isAlive(), !testCell.isDead());
 	}
 
 }
