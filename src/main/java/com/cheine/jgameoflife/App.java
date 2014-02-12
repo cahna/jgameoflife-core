@@ -22,9 +22,27 @@ public class App
 			"001100\n" +
 			"000000\n";
 	
+	private static final String lwssMap = 
+			"0000000\n" +
+            "0100100\n" +
+            "0000010\n" +
+            "0100010\n" +
+            "0011110\n" +
+            "0000000\n" +
+            "0000000\n";
+	
+	private static final String gliderMap = 
+			"00000000\n" +
+            "00010000\n" +
+            "01010000\n" +
+            "00110000\n" +
+            "00000000\n" +
+            "00000000\n" +
+            "00000000\n";
+	
     public static void main( String[] args ) throws ParseException, IOException
     {
-    	String seed = beehiveMap;
+    	String seed = lwssMap;
     	
         System.out.println( "Conway's Game of Life\n\n" );
         System.out.println( "Seed:\n" + seed );

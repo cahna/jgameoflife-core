@@ -168,34 +168,28 @@ public class GameOfLife extends Universe {
 	private static int getLivingNeighbors(boolean[][] map, int x, int y) {
 		int n = 0, height = map.length, width = map[0].length;
 		
-		int north = y-1 < 0 ? height-1 : (y-1)%height;
-		int south = y+1 > height ? 0 : (y+1)%height;
-		int west  = x-1 < 0 ? width-1 : (x-1)%width;
-		int east  = x+1 > width ? 0 : (x+1)%height;
+		int north = y-1 < 0 ? height-1 : (y-1);
+		int south = y+1 >= height ? 0 : (y+1);
+		int west  = x-1 < 0 ? width-1 : (x-1);
+		int east  = x+1 >= width ? 0 : (x+1);
 		
-		StringBuilder s = new StringBuilder(":" + x + "," + y + " - ");
-		
-		if(map[north][x]){
-			n++; s.append("North ");}
-		if(map[north][east]){
-			n++; s.append("Northeast ");}
-		if(map[y][east]){
-			n++; s.append("East ");}
-		if(map[south][east]){
-			n++; s.append("Southeast ");}
-		if(map[south][x]){
-			n++; s.append("South ");}
-		if(map[south][west]){
-			n++; s.append("Southwest ");}
-		if(map[y][west]){
-			n++; s.append("West ");}
-		if(map[north][west]){
-			n++; s.append("Northwest ");}
-		
-		if(n > 0) {
-			System.out.println(s.toString());
-		}
-		
+		if(map[north][x])
+			n++;
+		if(map[north][east])
+			n++;
+		if(map[y][east])
+			n++;
+		if(map[south][east])
+			n++;
+		if(map[south][x])
+			n++;
+		if(map[south][west])
+			n++;
+		if(map[y][west])
+			n++;
+		if(map[north][west])
+			n++;
+				
 		return n;
 	}
 	
