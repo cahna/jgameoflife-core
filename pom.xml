@@ -2,13 +2,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.cheine</groupId>
-  <artifactId>jgameoflife</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>jgameoflife-core</artifactId>
   <packaging>jar</packaging>
-
-  <name>jgameoflife</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,4 +16,10 @@
       <version>4.11</version>
     </dependency>
   </dependencies>
+  <parent>
+  	<groupId>com.cheine.jgameoflife</groupId>
+  	<artifactId>jgameoflife-all</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  	<relativePath>../jgameoflife-all</relativePath>
+  </parent>
 </project>

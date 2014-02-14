@@ -10,8 +10,6 @@ import com.cheine.jgameoflife.GameOfLife;
 
 public class MethodTest {
 	
-	// Using universe with block, blinker, and spaceship for tests
-	private final int testTicks = 100;
 	private final int knownWidth = 6;
 	private final int knownHeight = 6;
 	private final String[] knownUniverse = {
